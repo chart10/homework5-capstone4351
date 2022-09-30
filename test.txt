@@ -1,6 +1,3 @@
 Java,Is,To,JavaScript
 As,Car,Is,To,Carpet
-OOP,For,Life
-Java,Is,To,JavaScript
-As,Car,Is,To,Carpet
 HmmHmmHmm,Programming,Humor

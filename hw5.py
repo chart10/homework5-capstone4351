@@ -4,11 +4,11 @@ import math
 
 # ~~~~~~~~~~ TASK 1 ~~~~~~~~~~
 # 1. Write a function that takes a string as input and does the following:
-#   Returns True if the input string has more vowels than consonants
-#   Returns False if the input string has more consonants than vowels
-#   Returns None (this is the Python equivalent of null) if the input
-#       string has an equal number of consonants and vowels. We’ll ignore
-#       type safety for now!
+# Returns True if the input string has more vowels than consonants,
+# returns False if the input string has more consonants than vowels,
+# or returns None (this is the Python equivalent of null) if the input
+# string has an equal number of consonants and vowels. We’ll ignore
+# type safety for now!
 
 # Resources used:
 #   https://appdividend.com/2022/05/30/python-list-contains/
@@ -44,10 +44,11 @@ def task_1(input):
     if v == c:  # if vowels = consenants return none
         return None
 
+
 # Examples:
-#   print(task_1("Cracking Toast, Gromit!!!"))
-#   print(task_1("HELLOOOOOOOO!"))
-#   print(task_1("Helloo"))
+# print(task_1("Cracking Toast, Gromit!!!"))
+# print(task_1("HELLOOOOOOOO!"))
+# print(task_1("Helloo"))
 
 
 # ~~~~~~~~~~ TASK 2 ~~~~~~~~~~
@@ -61,11 +62,12 @@ def task_1(input):
 def task_2(R):
     return (4/3)*math.pi*math.pow(R, 3)
 
+
 # Examples:
-#   print(task_2(6))
+# print(task_2(6))
 
 
-# ~~~~~~~~~~ TASK 2 ~~~~~~~~~~
+# ~~~~~~~~~~ TASK 3 ~~~~~~~~~~
 # 3. Comma-separated values (CSV) is a popular format for storing data.
 # For the first step of the CSV portion of this assignment, write a
 # function that takes a list of strings as inputs, and returns a single
@@ -88,9 +90,10 @@ def task_3(input):
     strung = strung[:-1]  # remove the last comma
     return strung
 
+
 # Examples:
-#   print(task_3(["I", "Love", "Python"]))
-#   print(task_3(["Minions:", "Rise", "of", "Gru"]))
+# print(task_3(["I", "Love", "Python"]))
+# print(task_3(["Minions:", "Rise", "of", "Gru"]))
 
 
 # ~~~~~~~~~~ TASK 4 ~~~~~~~~~~
@@ -101,6 +104,7 @@ def task_3(input):
 
 # Recources used:
 #   https://www.w3schools.com/python/python_file_write.asp
+#   https://stackoverflow.com/questions/15478127/remove-final-character-from-string
 
 def task_4(input, filepath):
 
@@ -120,9 +124,10 @@ def task_4(input, filepath):
         strung = strung[:-1]  # remove the last comma
         f.write(strung + "\n")
 
+
 # Example:
-#   print(task_4([["Java", "Is", "To", "JavaScript"], [
-#      "As", "Car", "Is", "To", "Carpet"], ["HmmHmmHmm", "Programming", "Humor"]], "./test.txt"))
+# print(task_4([["Java", "Is", "To", "JavaScript"], ["As", "Car", "Is",
+#       "To", "Carpet"], ["HmmHmmHmm", "Programming", "Humor"]], "./test.txt"))
 
 
 # ~~~~~~~~~~ TASK 5 ~~~~~~~~~~
@@ -132,6 +137,28 @@ def task_4(input, filepath):
 # output list (and each value between the commas in the file row is one
 # element in the list). To see an example, just flip the input and output
 # above.
+
+# Resources used:
+#   https://www.w3schools.com/python/python_file_open.asp
+#   https://www.w3schools.com/python/ref_string_split.asp
+
+def task_5(filepath):
+    # declare an empty list, output
+    output = []
+
+    # Write a for loop that reads each line of a file and converts it to a string
+    f = open(filepath, "r")
+    for line in f:
+        if line[len(line)-1] == "\n":
+            line = line[:-1]  # Remove "\n" from end of line
+        line = line.split(",")  # Turn each string into a list of words
+        output.append(line)  # add each word as a string entry in output list
+
+    return output
+
+
+# Example:
+# print(task_5("./test.txt"))
 
 
 # ~~~~~~~~~~ TASK 6 ~~~~~~~~~~
@@ -143,7 +170,40 @@ def task_4(input, filepath):
 # should catch the error if the user submits a string and an integer, for
 # example.
 
+# Resources used:
+#   https://www.w3schools.com/python/python_try_except.asp
+
+def task_6(a, b):
+    # Use try/except to print an error message if a + b cannot be evaluated
+    try:
+        return a + b
+    except:
+        print("task_6 requires two inputs of the same type")
+
+
+# Example:
+# print(task_6('cow', 42))
+# print(task_6(5, 5))
+
+
 # ~~~~~~~~~~ TASK 7 ~~~~~~~~~~
 # 7. Write a function that takes a list of integers and returns the same list,
 # but with all values that occur only once removed (for example, [1,2,3,1]
 # would become [1,1])
+
+def task_7(inputList):
+    # declare empty list, output
+    output = []
+
+    # write a for loop that iterates over the inputList
+    for item in inputList:
+        # if the item occurs more than once, add to output list
+        if inputList.count(item) > 1:
+            output.append(item)
+
+    return output
+
+
+# Examples:
+# print(task_7([1, 2, 3, 1]))
+# print(task_7([1, 2, 3, 3, 4, 4, 5, 6, 7, 8, 9, 1]))
